@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let topValue = 0;
+    function up_func(){
+        let moveUp = document.getElementById("inner_div");
+        topValue = topValue - 100;
+        if (topValue < -400){
+            topValue = 0;
+        }
+        moveUp.style.top = topValue+"px"; //123
+    }
+    function down_func(){
+        let moveDown = document.getElementById("inner_div");
+        topValue = topValue + 100;
+        if (topValue > 0){
+            topValue = -400;
+        }
+        moveDown.style.top = topValue+"px";
+    }
+</script>
+<style>
+    #frame_div{
+        width: 100px;
+        height: 100px;
+        position: relative;
+        overflow: hidden;
+    }
+    #inner_div{
+        width: 100px;
+        height: 500px;
+        top: 0px;
+        background-color: blue;
+        position: absolute;
+        transition: top 0.5s;
+    }
+    .upbutton{
+        position: absolute;
+        left: 118px;
+        top: 17px;
+    }
+    .downbutton{
+        position: absolute;
+        left: 118px;
+        top: 77px;
+    }
+    .mob{
+        font-size: 70px;
+        text-align: center;
+        float: left;
+        width: 100px;
+        height: 100px;
+    }
+    .mob:nth-child(1){background-color: aqua;}
+    .mob:nth-child(2){background-color: rgb(82, 64, 129);}
+    .mob:nth-child(3){background-color: rgb(184, 168, 82);}
+    .mob:nth-child(4){background-color: rgb(158, 45, 45);}
+    .mob:nth-child(5){background-color: rgb(241, 75, 205);}
+</style>
+<body>
+    <div id="frame_div"> <!--글자 프레임 역할-->
+        <div id="inner_div"> <!--움직임 역할-->         
+            <div class="mob">1</div>
+            <div class="mob">2</div>
+            <div class="mob">3</div>
+            <div class="mob">4</div>
+            <div class="mob">5</div>
+        </div>
+    </div>
+    <button class="upbutton" onclick="up_func()";>up</button>
+    <button class="downbutton" onclick="down_func()";>down</button>
+</body>
+</html>
