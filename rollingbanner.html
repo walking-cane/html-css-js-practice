@@ -9,17 +9,17 @@
 <script>
     let topValue = 0;
     function up_func(){
-        let moveUp = document.getElementById("inner_div");
+        let moveUp = document.getElementById("inner_div"); // UP 버튼 움직임 구현
         topValue = topValue - 100;
-        if (topValue < -400){
+        if (topValue < -400){ //끝에 도달하면 처음으로 되돌아감
             topValue = 0;
         }
-        moveUp.style.top = topValue+"px"; //123
+        moveUp.style.top = topValue+"px";
     }
     function down_func(){
-        let moveDown = document.getElementById("inner_div");
+        let moveDown = document.getElementById("inner_div"); // DOWN버튼 움직임 구현
         topValue = topValue + 100;
-        if (topValue > 0){
+        if (topValue > 0){ //끝에 도달하면 처음으로 되돌아감
             topValue = -400;
         }
         moveDown.style.top = topValue+"px";
@@ -40,32 +40,32 @@
         position: absolute;
         transition: top 0.5s;
     }
-    .upbutton{
+    .upbutton{ // UP 버튼 위치 조정
         position: absolute;
         left: 118px;
         top: 17px;
     }
-    .downbutton{
+    .downbutton{ // DOWN 버튼 위치 조정
         position: absolute;
         left: 118px;
         top: 77px;
     }
-    .mob{
+    .mob{ // 움직임 박스
         font-size: 70px;
         text-align: center;
         float: left;
         width: 100px;
         height: 100px;
     }
-    .mob:nth-child(1){background-color: aqua;}
+    .mob:nth-child(1){background-color: aqua;} // 움직임 박스 개별 색상
     .mob:nth-child(2){background-color: rgb(82, 64, 129);}
     .mob:nth-child(3){background-color: rgb(184, 168, 82);}
     .mob:nth-child(4){background-color: rgb(158, 45, 45);}
     .mob:nth-child(5){background-color: rgb(241, 75, 205);}
 </style>
 <body>
-    <div id="frame_div"> <!--글자 프레임 역할-->
-        <div id="inner_div"> <!--움직임 역할-->         
+    <div id="frame_div"> <!--글자 프레임-->
+        <div id="inner_div"> <!--움직임 박스-->         
             <div class="mob">1</div>
             <div class="mob">2</div>
             <div class="mob">3</div>
