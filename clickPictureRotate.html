@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html, body{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #1f1f1f;
+    }
+</style>
+<body>
+    <script> // 스크립트를 바디 안에서 선언하는 이유 = 로딩완료된 웹 페이지에서 동적으로 컨텐츠를 생성하는 경우엔 <body> 안에서
+        window.addEventListener('click', spriteEffect) // click하면 spriteEffect 실행
+
+        function spriteEffect(e) { 
+            const cols = 4
+            const rows = 4
+            const picWidth = 498
+            const picHeight = 498
+            let current = 0 // 반복을 위한 current 변수 선언
+            const intervalGap = 1000 / 10 // 1000ms당 8번 실행          
+            
+            const sprite = document.createElement('div') // div 생성
+
+            sprite.style.position = 'absolute'
+            sprite.style.width = picWidth + 'px'
+            sprite.style.height = picHeight + 'px'
+            sprite.style.backgroundImage = 'url("./4x4.jpg")'
+            sprite.style.left = e.clientX + 'px' // 클릭 좌표에 div 시작
+            sprite.style.top = e.clientY + 'px'
+            sprite.style.backgroundSize = `${picWidth*cols}px ${picHeight*rows}px`
+            sprite.style.translate = `-50% -50%` // 클릭 시 생성위치 커서 가운데로
+            document.body.append(sprite) // 바디에 div를 삽입
+
+            const intervalId = setInterval(() => {
+                const currentCols = current % cols // 나머지 구하기
+                const currentRows = Math.floor(current / rows) // 몫 구하기
+
+                sprite.style.backgroundPosition = `${-picWidth*currentCols}px ${-picHeight*currentRows}px`
+                current++
+                if (current % (rows*cols*2) === 0){ // 반복종료
+                clearInterval(intervalId)
+                document.body.removeChild(sprite)
+                }
+            }, intervalGap)
+        }
+    </script>
+</body>
+</html>
